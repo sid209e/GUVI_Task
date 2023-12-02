@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2 class="text-center mb-4">Your Profile</h2>
+            <div class="card shadow-lg">
+                <div class="card-header bg-info text-white">
+                    <h3 class="text-center">Your Information</h3>
+                </div>
+                <div class="card-body p-5">
+                    <!-- User Details Display -->
+                    <p><strong>Username:</strong> <span id="usernameDisplay"></span></p>
+                    <p><strong>Email:</strong> <span id="emailDisplay"></span></p>
+                    <p><strong>Age:</strong> <span id="ageDisplay"></span></p>
+                    <p><strong>Date of Birth:</strong> <span id="dobDisplay"></span></p>
+                    <p><strong>Contact Number:</strong> <span id="contactDisplay"></span></p>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-between mb-3">
+                        <button type="button" id="updateDetailsButton" class="btn btn-info" data-toggle="modal" data-target="#updateDetailsModal">Update Details</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#changePasswordModal">Change Password</button>
+                    </div>
+                    <button type="button" class="btn btn-danger btn-block" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Update Details Modal -->
+<div class="modal fade" id="updateDetailsModal" tabindex="-1" role="dialog" aria-labelledby="updateDetailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateDetailsModalLabel">Update Your Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="updateDetailsForm" method="POST">
+          <!-- Form fields for updating details -->
+          <div class="form-group">
+              <label for="updatedAge">Age</label>
+              <input type="number" class="form-control" id="updatedAge" name="updatedAge" required>
+          </div>
+          <div class="form-group">
+              <label for="updatedDob">Date of Birth</label>
+              <input type="date" class="form-control" id="updatedDob" name="updatedDob" required>
+          </div>
+          <div class="form-group">
+              <label for="updatedContact">Contact Number</label>
+              <input type="tel" class="form-control" id="updatedContact" name="updatedContact" required>
+          </div>
+          <!-- Include the user ID -->
+          <input type="hidden" id="userId" name="userId" value="{user_id}">
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Change Password Modal -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="changePasswordModalLabel">Change Your Password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="changePasswordForm" method="POST">
+          <div class="form-group">
+              <label for="currentPassword">Current Password</label>
+              <input type="password" class="form-control" id="currentPassword" name="currentPassword" required>
+          </div>
+          <div class="form-group">
+              <label for="newPassword">New Password</label>
+              <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+          </div>
+          <div class="form-group">
+              <label for="confirmNewPassword">Confirm New Password</label>
+              <input type="password" class="form-control" id="confirmNewPassword" name="confirmNewPassword" required>
+          </div>
+          <!-- Include the user ID -->
+          <input type="hidden" id="userId" name="userId" value="">
+          <button type="submit" class="btn btn-primary">Update Password</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- jQuery and Bootstrap Bundle (includes Popper) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JavaScript -->
+<script src="js/profile.js"></script>
+
+</body>
+</html>
